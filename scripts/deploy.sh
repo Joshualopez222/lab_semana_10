@@ -8,8 +8,10 @@ set -euo pipefail
 IFS=$'\n\t'
 
 # ── Directorio del script (portable) ────────────────────────
-readonly SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-readonly LOG_FILE="${SCRIPT_DIR}/../deploy-$(date +%Y%m%d-%H%M%S).log"
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+readonly SCRIPT_DIR
+LOG_FILE="${SCRIPT_DIR}/../deploy-$(date +%Y%m%d-%H%M%S).log"
+readonly LOG_FILE
 
 # ── Variables configurables ──────────────────────────────────
 readonly LOCATION="${LOCATION:-eastus2}"
