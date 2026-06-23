@@ -1,0 +1,6 @@
+{"time":"2026-06-23T00:23:12Z","level":"INFO","msg":"=== INICIO DEL DEPLOY ===","script":"deploy.sh"}
+{"time":"2026-06-23T00:23:12Z","level":"INFO","msg":"Modo: DRY_RUN=true | DESTROY=false","script":"deploy.sh"}
+{"time":"2026-06-23T00:23:12Z","level":"INFO","msg":"Verificando prerequisitos...","script":"deploy.sh"}
+{"time":"2026-06-23T00:23:15Z","level":"INFO","msg":"Suscripción activa: Azure for Students","script":"deploy.sh"}
+{"time":"2026-06-23T00:23:15Z","level":"INFO","msg":"DRY RUN: Se ejecutaría el deploy sobre RG=rg-lab-autodeploy en eastus2","script":"deploy.sh"}
+{"time":"2026-06-23T00:23:15Z","level":"INFO","msg":"Script finalizado. Log: /home/joshua/lab-semana11/scripts/../deploy-20260622-182312.log","script":"deploy.sh"}

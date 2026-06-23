@@ -1,0 +1,84 @@
+name: Deploy Azure Infrastructure
+
+on:
+  push:
+    branches: [main]
+    paths: [scripts/**, .github/workflows/**]
+  workflow_dispatch:
+    inputs:
+      dry_run:
+        description: "Dry run (no crear recursos)"
+        type: boolean
+        default: true
+
+# OIDC: permite az login sin almacenar secrets de larga duración
+permissions:
+  id-token: write   # OIDC token
+  contents: read
+
+env:
+  LOCATION: eastus2
+  SUFFIX: ghactions
+
+jobs:
+  validate:
+    name: "Validate Scripts"
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install shellcheck
+        run: sudo apt-get install -y shellcheck
+
+      - name: Lint Bash scripts
+        run: shellcheck --severity=warning scripts/*.sh
+
+      - name: Check script permissions
+        run: |
+          find scripts/ -name "*.sh" | while read -r f; do
+            [[ -x "$f" ]] || { echo "No ejecutable: $f"; exit 1; }
+          done
+
+  deploy:
+    name: "Deploy Infrastructure"
+    runs-on: ubuntu-latest
+    needs: validate
+    environment: production   # Requiere approval manual
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Azure Login (OIDC — sin password)
+        uses: azure/login@v2
+        with:
+          client-id:       ${{ secrets.AZURE_CLIENT_ID }}
+          tenant-id:       ${{ secrets.AZURE_TENANT_ID }}
+          subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
+
+      - name: Deploy Infrastructure
+        env:
+          LOCATION: ${{ env.LOCATION }}
+          SUFFIX:   ${{ env.SUFFIX }}
+          DRY_RUN_FLAG: ${{ inputs.dry_run == true && '--dry-run' || '' }}
+        run: |
+          chmod +x scripts/deploy.sh
+          ./scripts/deploy.sh $DRY_RUN_FLAG
+
+      - name: Upload deploy log
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: deploy-log-${{ github.run_id }}
+          path: deploy-*.log
+          retention-days: 30
+
+  notify:
+    name: "Notify Result"
+    runs-on: ubuntu-latest
+    needs: deploy
+    if: always()
+    steps:
+      - name: Notify Teams/Slack
+        run: |
+          STATUS="${{ needs.deploy.result }}"
+          echo "Deploy status: $STATUS"
+          # curl -X POST $WEBHOOK_URL -d '{"text":"Deploy: '$STATUS'"}'

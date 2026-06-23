@@ -1,0 +1,16 @@
+{"time":"2026-06-23T00:30:50Z","level":"INFO","msg":"=== INICIO DEL DEPLOY ===","script":"deploy.sh"}
+{"time":"2026-06-23T00:30:50Z","level":"INFO","msg":"Modo: DRY_RUN=false | DESTROY=false","script":"deploy.sh"}
+{"time":"2026-06-23T00:30:50Z","level":"INFO","msg":"Verificando prerequisitos...","script":"deploy.sh"}
+{"time":"2026-06-23T00:30:55Z","level":"INFO","msg":"Suscripción activa: Azure for Students","script":"deploy.sh"}
+{"time":"2026-06-23T00:30:55Z","level":"INFO","msg":"Verificando Resource Group rg-lab-autodeploy...","script":"deploy.sh"}
+{"time":"2026-06-23T00:31:02Z","level":"INFO","msg":"RG rg-lab-autodeploy ya existe — omitiendo creación","script":"deploy.sh"}
+{"time":"2026-06-23T00:31:02Z","level":"INFO","msg":"Verificando VNet vnet-lab...","script":"deploy.sh"}
+{"time":"2026-06-23T00:31:11Z","level":"INFO","msg":"VNet vnet-lab ya existe","script":"deploy.sh"}
+{"time":"2026-06-23T00:31:11Z","level":"INFO","msg":"Configurando NSG nsg-web...","script":"deploy.sh"}
+{"time":"2026-06-23T00:31:32Z","level":"INFO","msg":"Verificando VM vm-lab-auto...","script":"deploy.sh"}
+{"time":"2026-06-23T00:31:37Z","level":"INFO","msg":"Leyendo credenciales desde Key Vault kv-lab-auto-josua01...","script":"deploy.sh"}
+{"time":"2026-06-23T00:31:49Z","level":"INFO","msg":"Ejecutando: crear VM","script":"deploy.sh"}
+{"time":"2026-06-23T00:33:14Z","level":"INFO","msg":"VM creada. IP privada: 10.40.1.4","script":"deploy.sh"}
+{"time":"2026-06-23T00:33:14Z","level":"INFO","msg":"Verificando Storage Account stlabautodeployjosua01...","script":"deploy.sh"}
+{"time":"2026-06-23T00:33:19Z","level":"INFO","msg":"Ejecutando: crear Storage","script":"deploy.sh"}
+{"time":"2026-06-23T00:34:02Z","level":"INFO","msg":"Script finalizado. Log: /home/joshua/lab-semana11/scripts/../deploy-20260622-183050.log","script":"deploy.sh"}

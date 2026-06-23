@@ -1,0 +1,18 @@
+{"time":"2026-06-23T00:23:44Z","level":"INFO","msg":"=== INICIO DEL DEPLOY ===","script":"deploy.sh"}
+{"time":"2026-06-23T00:23:44Z","level":"INFO","msg":"Modo: DRY_RUN=false | DESTROY=false","script":"deploy.sh"}
+{"time":"2026-06-23T00:23:44Z","level":"INFO","msg":"Verificando prerequisitos...","script":"deploy.sh"}
+{"time":"2026-06-23T00:23:48Z","level":"INFO","msg":"Suscripción activa: Azure for Students","script":"deploy.sh"}
+{"time":"2026-06-23T00:23:48Z","level":"INFO","msg":"Verificando Resource Group rg-lab-autodeploy...","script":"deploy.sh"}
+{"time":"2026-06-23T00:23:52Z","level":"INFO","msg":"RG rg-lab-autodeploy ya existe — omitiendo creación","script":"deploy.sh"}
+{"time":"2026-06-23T00:23:52Z","level":"INFO","msg":"Verificando VNet vnet-lab...","script":"deploy.sh"}
+{"time":"2026-06-23T00:24:00Z","level":"INFO","msg":"Ejecutando: crear VNet","script":"deploy.sh"}
+{"time":"2026-06-23T00:24:19Z","level":"INFO","msg":"Ejecutando: crear Subnet","script":"deploy.sh"}
+{"time":"2026-06-23T00:24:26Z","level":"INFO","msg":"Configurando NSG nsg-web...","script":"deploy.sh"}
+{"time":"2026-06-23T00:25:17Z","level":"INFO","msg":"Verificando VM vm-lab-auto...","script":"deploy.sh"}
+{"time":"2026-06-23T00:25:22Z","level":"INFO","msg":"Leyendo credenciales desde Key Vault kv-lab-auto-josua01...","script":"deploy.sh"}
+{"time":"2026-06-23T00:25:33Z","level":"INFO","msg":"Ejecutando: crear VM","script":"deploy.sh"}
+{"time":"2026-06-23T00:25:37Z","level":"WARN","msg":"Intento 1/4 fallido. Reintentando en 2s...","script":"deploy.sh"}
+{"time":"2026-06-23T00:25:43Z","level":"WARN","msg":"Intento 2/4 fallido. Reintentando en 4s...","script":"deploy.sh"}
+{"time":"2026-06-23T00:25:51Z","level":"WARN","msg":"Intento 3/4 fallido. Reintentando en 8s...","script":"deploy.sh"}
+{"time":"2026-06-23T00:26:03Z","level":"ERROR","msg":"FALLÓ tras 4 intentos: crear VM","script":"deploy.sh"}
+{"time":"2026-06-23T00:26:03Z","level":"INFO","msg":"Script finalizado. Log: /home/joshua/lab-semana11/scripts/../deploy-20260622-182344.log","script":"deploy.sh"}
